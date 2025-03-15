@@ -1,75 +1,112 @@
-// src/components/Quiz.js
+import React, { useState } from 'react';
 
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import neurologyQuestions from '../data/neurology';
-import cardiologyQuestions from '../data/cardiology';
-import orthopedicsQuestions from '../data/orthopedics';
-import pediatricsQuestions from '../data/pediatrics';
-import psychiatryQuestions from '../data/psychiatry';
-import endocrinologyQuestions from '../data/endocrinology';
-import dermatologyQuestions from '../data/dermatology';
-import gastroenterologyQuestions from '../data/gastroenterology';
-import rheumatologyQuestions from '../data/rheumatology';
-import infectiousDiseasesQuestions from '../data/infectiousDiseases';
-import obstetricsGynecologyQuestions from '../data/obstetricsGynecology';
-import urologyQuestions from '../data/urology';
-import ophthalmologyQuestions from '../data/ophthalmology';
-import ENTQuestions from '../data/ent';
-import nephrologyQuestions from '../data/nephrology';
-import pulmonologyQuestions from '../data/pulmonology';
-import cardiothoracicSurgeryQuestions from '../data/cardiothoracicSurgery';
-import orthopedicSurgeryQuestions from '../data/orthopedicSurgery';
+// Import all specialties
+import cardiologyQuestions from './data/cardiology';
+import dermatologyQuestions from './data/dermatology';
+import endocrinologyQuestions from './data/endocrinology';
+import gastroenterologyQuestions from './data/gastroenterology';
+import gynecologyQuestions from './data/gynecology';
+import infectiousDiseaseQuestions from './data/infectiousDisease';
+import internalMedicineQuestions from './data/internalMedicine';
+import nephrologyQuestions from './data/nephrology';
+import neurologyQuestions from './data/neurology';
+import obstetricsQuestions from './data/obstetrics';
+import ophthalmologyQuestions from './data/ophthalmology';
+import orthopedicsQuestions from './data/orthopedics';
+import pediatricsQuestions from './data/pediatrics';
+import pulmonologyQuestions from './data/pulmonology';
+import rheumatologyQuestions from './data/rheumatology';
+import surgeryQuestions from './data/surgery';
+import toxicologyQuestions from './data/toxicology';
+import urologyQuestions from './data/urology';
+import hematologyQuestions from './data/hematology';
+import anesthesiologyQuestions from './data/anesthesiology';
+import plasticSurgeryQuestions from './data/plasticSurgery';
+import familyMedicineQuestions from './data/familyMedicine';
+import pathololgyQuestions from './data/pathology';
+import otolaryngologyQuestions from './data/otolaryngology';
+import emergencyMedicineQuestions from './data/emergencyMedicine';
 
-const allSpecialties = {
-  1: neurologyQuestions,
-  2: cardiologyQuestions,
-  3: orthopedicsQuestions,
-  4: pediatricsQuestions,
-  5: psychiatryQuestions,
-  6: endocrinologyQuestions,
-  7: dermatologyQuestions,
-  8: gastroenterologyQuestions,
-  9: rheumatologyQuestions,
-  10: infectiousDiseasesQuestions,
-  11: obstetricsGynecologyQuestions,
-  12: urologyQuestions,
-  13: ophthalmologyQuestions,
-  14: ENTQuestions,
-  15: nephrologyQuestions,
-  16: pulmonologyQuestions,
-  17: cardiothoracicSurgeryQuestions,
-  18: orthopedicSurgeryQuestions,
-  // Add more specialties as needed
-};
+const specialties = [
+  { name: 'Cardiology', questions: cardiologyQuestions },
+  { name: 'Dermatology', questions: dermatologyQuestions },
+  { name: 'Endocrinology', questions: endocrinologyQuestions },
+  { name: 'Gastroenterology', questions: gastroenterologyQuestions },
+  { name: 'Gynecology', questions: gynecologyQuestions },
+  { name: 'Infectious Disease', questions: infectiousDiseaseQuestions },
+  { name: 'Internal Medicine', questions: internalMedicineQuestions },
+  { name: 'Nephrology', questions: nephrologyQuestions },
+  { name: 'Neurology', questions: neurologyQuestions },
+  { name: 'Obstetrics', questions: obstetricsQuestions },
+  { name: 'Ophthalmology', questions: ophthalmologyQuestions },
+  { name: 'Orthopedics', questions: orthopedicsQuestions },
+  { name: 'Pediatrics', questions: pediatricsQuestions },
+  { name: 'Pulmonology', questions: pulmonologyQuestions },
+  { name: 'Rheumatology', questions: rheumatologyQuestions },
+  { name: 'Surgery', questions: surgeryQuestions },
+  { name: 'Toxicology', questions: toxicologyQuestions },
+  { name: 'Urology', questions: urologyQuestions },
+  { name: 'Hematology', questions: hematologyQuestions },
+  { name: 'Anesthesiology', questions: anesthesiologyQuestions },
+  { name: 'Plastic Surgery', questions: plasticSurgeryQuestions },
+  { name: 'Family Medicine', questions: familyMedicineQuestions },
+  { name: 'Pathology', questions: pathololgyQuestions },
+  { name: 'Otolaryngology', questions: otolaryngologyQuestions },
+  { name: 'Emergency Medicine', questions: emergencyMedicineQuestions },
+];
 
-function Quiz() {
-  const { specialtyId, questionId } = useParams();
-  const [currentQuestion, setCurrentQuestion] = useState(null);
+const Quiz = () => {
+  const [selectedSpecialty, setSelectedSpecialty] = useState(specialties[0].name);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
 
-  useEffect(() => {
-    const questions = allSpecialties[specialtyId];
-    if (questions) {
-      const question = questions.find(q => q.id === parseInt(questionId));
-      setCurrentQuestion(question);
+  const handleAnswer = (selectedAnswer) => {
+    const currentSpecialty = specialties.find(specialty => specialty.name === selectedSpecialty);
+    const currentQuestion = currentSpecialty.questions[currentQuestionIndex];
+
+    if (selectedAnswer === currentQuestion.correctAnswer) {
+      setScore(score + 1);
     }
-  }, [specialtyId, questionId]);
 
-  if (!currentQuestion) {
-    return <div>Loading...</div>;
-  }
+    if (currentQuestionIndex < currentSpecialty.questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      alert(`Quiz Complete! Your score is: ${score + 1}`);
+    }
+  };
+
+  const handleSpecialtyChange = (event) => {
+    setSelectedSpecialty(event.target.value);
+    setCurrentQuestionIndex(0);
+    setScore(0);
+  };
+
+  const currentSpecialty = specialties.find(specialty => specialty.name === selectedSpecialty);
+  const currentQuestion = currentSpecialty.questions[currentQuestionIndex];
 
   return (
     <div>
-      <h2>{currentQuestion.question}</h2>
-      <ul>
-        {currentQuestion.choices.map((choice, index) => (
-          <li key={index}>{choice}</li>
+      <h1>Medical Specialty Quiz</h1>
+      <select value={selectedSpecialty} onChange={handleSpecialtyChange}>
+        {specialties.map((specialty, index) => (
+          <option key={index} value={specialty.name}>
+            {specialty.name}
+          </option>
         ))}
-      </ul>
-      <p><strong>Explanation:</strong> {currentQuestion.explanation}</p>
+      </select>
+
+      <div>
+        <h2>{currentQuestion.question}</h2>
+        <div>
+          {currentQuestion.choices.map((choice, index) => (
+            <button key={index} onClick={() => handleAnswer(choice)}>
+              {choice}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
-}
+};
 
 export default Quiz;
