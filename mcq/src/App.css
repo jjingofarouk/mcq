@@ -1,38 +1,93 @@
+/* Define the color palette */
+:root {
+  --primary-color: #3a8f85;  /* Sophisticated teal */
+  --primary-dark: #2c7269;   /* Deeper teal for emphasis */
+  --primary-light: #8cc5bf;  /* Softer teal for accents */
+  --secondary-color: #d68c45; /* Warm terracotta orange */
+  --secondary-dark: #b87339;  /* Deeper terracotta */
+  --secondary-light: #e9b384; /* Soft peach accent */
+  --dark: #2d3a3a;            /* Charcoal with hint of teal */
+  --dark-gray: #4d5c5c;       /* Warmer dark gray */
+  --medium-gray: #7e8c8c;     /* Sophisticated medium gray */
+  --light-gray: #d2d8d8;      /* Warmer light gray */
+  --off-white: #f8f7f5;       /* Cream off-white */
+  --white: #ffffff;
+  --success: #739e73;         /* Sage green */
+  --warning: #e6b86a;         /* Subdued gold */
+  --error: #c17b7b;           /* Muted brick red */
+  --info: #6a91ab;            /* Muted blue */
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--off-white);
+  color: var(--dark);
+  margin: 0;
+  padding: 0;
+}
+
 .App {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.header {
+  text-align: center;
+  background-color: var(--primary-color);
+  padding: 40px 20px;
+  border-radius: 8px;
+  color: var(--white);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+.header p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.cta {
+  margin-top: 40px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.cta h2 {
+  font-size: 28px;
+  color: var(--secondary-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.cta-btn {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.cta-btn:hover {
+  background-color: var(--secondary-dark);
 }
 
-.App-link {
-  color: #61dafb;
+footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 14px;
+  color: var(--dark);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
