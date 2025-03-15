@@ -1,13 +1,184 @@
-// src/data/anesthesiology.js
-
 const anesthesiologyQuestions = [
   {
     id: 1,
     question: 'A 65-year-old male with a history of hypertension and diabetes is scheduled for elective surgery. What is the most important consideration when planning his anesthesia?',
     choices: ['Blood pressure control', 'Airway management', 'Fluid resuscitation', 'Pain management'],
     correctAnswer: 'Blood pressure control',
-    explanation: 'Hypertension and diabetes increase the risk of perioperative complications, so adequate blood pressure control is essential during anesthesia.',
+    explanation: 'Hypertension and diabetes increase the risk of perioperative complications, so adequate blood pressure control is essential during anesthesia. Poorly controlled blood pressure can lead to myocardial ischemia, stroke, and renal dysfunction. Preoperative optimization with antihypertensive medications and intraoperative monitoring are crucial.',
   },
+  {
+    id: 2,
+    question: 'A 45-year-old female with a history of asthma is undergoing general anesthesia. Which of the following agents should be avoided?',
+    choices: ['Sevoflurane', 'Propofol', 'Ketamine', 'Thiopental'],
+    correctAnswer: 'Ketamine',
+    explanation: 'Ketamine can cause bronchospasm in patients with asthma due to its sympathetic stimulation and release of catecholamines. While it is generally bronchodilatory, the risk of bronchospasm makes it less favorable compared to other agents like sevoflurane or propofol, which are safer in asthmatic patients.',
+  },
+  {
+    id: 3,
+    question: 'A 70-year-old male with severe aortic stenosis is scheduled for non-cardiac surgery. What is the most critical hemodynamic goal during anesthesia?',
+    choices: ['Maintain high systemic vascular resistance', 'Maintain sinus rhythm', 'Avoid tachycardia', 'All of the above'],
+    correctAnswer: 'All of the above',
+    explanation: 'Patients with severe aortic stenosis have a fixed cardiac output and rely on adequate preload, afterload, and sinus rhythm to maintain perfusion. Tachycardia reduces diastolic filling time, which can severely compromise cardiac output. High systemic vascular resistance is necessary to maintain coronary perfusion pressure, and loss of sinus rhythm can lead to hemodynamic instability.',
+  },
+  {
+    id: 4,
+    question: 'A 50-year-old male with a history of alcohol use disorder is undergoing surgery. Which of the following is a potential complication during anesthesia?',
+    choices: ['Increased MAC of inhalational anesthetics', 'Decreased MAC of inhalational anesthetics', 'Increased sensitivity to opioids', 'Decreased risk of withdrawal symptoms'],
+    correctAnswer: 'Increased MAC of inhalational anesthetics',
+    explanation: 'Chronic alcohol use induces hepatic enzymes, leading to cross-tolerance to anesthetics and an increased minimum alveolar concentration (MAC) of inhalational agents. These patients may also experience withdrawal symptoms postoperatively, requiring careful management.',
+  },
+  {
+    id: 5,
+    question: 'A 60-year-old female with a history of rheumatoid arthritis is undergoing surgery. Which of the following airway considerations is most important?',
+    choices: ['Difficult mask ventilation', 'Difficult intubation', 'Risk of cervical spine instability', 'All of the above'],
+    correctAnswer: 'All of the above',
+    explanation: 'Patients with rheumatoid arthritis often have temporomandibular joint involvement, cervical spine instability, and cricoarytenoid joint involvement, all of which can complicate airway management. A thorough preoperative assessment, including imaging of the cervical spine, is essential.',
+  },
+  {
+    id: 6,
+    question: 'A 55-year-old male with a history of obstructive sleep apnea (OSA) is undergoing general anesthesia. Which of the following is the most appropriate postoperative management strategy?',
+    choices: ['Routine extubation in the OR', 'Continuous positive airway pressure (CPAP) post-extubation', 'Avoidance of opioids for pain management', 'All of the above'],
+    correctAnswer: 'Continuous positive airway pressure (CPAP) post-extubation',
+    explanation: 'Patients with OSA are at increased risk of postoperative respiratory complications, including airway obstruction and hypoxemia. CPAP should be used post-extubation to maintain airway patency. Opioids should be used cautiously due to the risk of respiratory depression.',
+  },
+  {
+    id: 7,
+    question: 'A 40-year-old female with a history of myasthenia gravis is undergoing surgery. Which of the following neuromuscular blocking agents should be avoided?',
+    choices: ['Rocuronium', 'Succinylcholine', 'Vecuronium', 'Cisatracurium'],
+    correctAnswer: 'Succinylcholine',
+    explanation: 'Patients with myasthenia gravis are highly sensitive to depolarizing neuromuscular blocking agents like succinylcholine, which can cause prolonged paralysis. Non-depolarizing agents like rocuronium or cisatracurium are preferred, but they should be used at reduced doses due to increased sensitivity.',
+  },
+  {
+    id: 8,
+    question: 'A 30-year-old male with a history of malignant hyperthermia (MH) is undergoing surgery. Which of the following is the most appropriate anesthetic plan?',
+    choices: ['Use of sevoflurane and succinylcholine', 'Use of propofol and rocuronium', 'Use of nitrous oxide and vecuronium', 'Use of desflurane and atracurium'],
+    correctAnswer: 'Use of propofol and rocuronium',
+    explanation: 'Patients with a history of MH must avoid all triggering agents, including volatile anesthetics (e.g., sevoflurane, desflurane) and succinylcholine. A total intravenous anesthetic (TIVA) with propofol and a non-depolarizing neuromuscular blocker like rocuronium is the safest option.',
+  },
+  {
+    id: 9,
+    question: 'A 25-year-old female with a history of sickle cell disease is undergoing surgery. Which of the following is the most important intraoperative consideration?',
+    choices: ['Maintain normothermia', 'Avoid hypoxia', 'Ensure adequate hydration', 'All of the above'],
+    correctAnswer: 'All of the above',
+    explanation: 'Patients with sickle cell disease are at risk of sickle cell crisis triggered by hypoxia, dehydration, hypothermia, and acidosis. Maintaining normothermia, ensuring adequate oxygenation, and providing sufficient hydration are critical to preventing complications.',
+  },
+  {
+    id: 10,
+    question: 'A 50-year-old male with a history of chronic kidney disease (CKD) is undergoing surgery. Which of the following is the most appropriate choice for neuromuscular blockade?',
+    choices: ['Atracurium', 'Rocuronium', 'Vecuronium', 'Pancuronium'],
+    correctAnswer: 'Atracurium',
+    explanation: 'Atracurium is metabolized by Hofmann elimination and ester hydrolysis, making it independent of renal function. Other agents like rocuronium and vecuronium are partially dependent on renal excretion and may accumulate in patients with CKD.',
+  },
+  // Add 190 more questions following the same format...
+const anesthesiologyQuestions = [
+  // Previous questions (1-10) remain unchanged
+  
+  {
+    id: 11,
+    question: 'A 60-year-old male with chronic obstructive pulmonary disease (COPD) is undergoing general anesthesia. Which of the following should be avoided?',
+    choices: ['High tidal volumes', 'Low FiO2', 'Slow respiratory rates', 'Use of regional anesthesia'],
+    correctAnswer: 'High tidal volumes',
+    explanation: 'High tidal volumes can cause barotrauma and air trapping in patients with COPD, leading to increased risk of pneumothorax and hemodynamic instability. Lung-protective ventilation strategies with lower tidal volumes and adequate expiratory time should be used.',
+  },
+  {
+    id: 12,
+    question: 'A 75-year-old female is undergoing hip replacement surgery under spinal anesthesia. Which of the following is a common complication?',
+    choices: ['Respiratory depression', 'Hypotension', 'Hypertension', 'Bradycardia'],
+    correctAnswer: 'Hypotension',
+    explanation: 'Spinal anesthesia causes sympathetic blockade, leading to vasodilation and decreased venous return, resulting in hypotension. Fluid loading and vasopressors may be needed to maintain hemodynamic stability.',
+  },
+  {
+    id: 13,
+    question: 'Which of the following is the best induction agent for a hemodynamically unstable patient?',
+    choices: ['Propofol', 'Etomidate', 'Thiopental', 'Ketamine'],
+    correctAnswer: 'Etomidate',
+    explanation: 'Etomidate provides hemodynamic stability due to minimal cardiovascular depression, making it the preferred induction agent in hemodynamically unstable patients.',
+  },
+  {
+    id: 14,
+    question: 'Which inhalational anesthetic is most likely to cause hepatotoxicity?',
+    choices: ['Sevoflurane', 'Isoflurane', 'Desflurane', 'Halothane'],
+    correctAnswer: 'Halothane',
+    explanation: 'Halothane is associated with immune-mediated hepatotoxicity, leading to halothane hepatitis, a rare but potentially fatal condition.',
+  },
+  {
+    id: 15,
+    question: 'Which of the following is the primary site of action of benzodiazepines?',
+    choices: ['NMDA receptors', 'GABA-A receptors', 'Opioid receptors', 'Alpha-adrenergic receptors'],
+    correctAnswer: 'GABA-A receptors',
+    explanation: 'Benzodiazepines enhance GABAergic inhibition by increasing the frequency of chloride channel opening at GABA-A receptors, leading to sedation and anxiolysis.',
+  },
+  {
+    id: 16,
+    question: 'Which neuromuscular blocking agent has the shortest duration of action?',
+    choices: ['Rocuronium', 'Cisatracurium', 'Mivacurium', 'Succinylcholine'],
+    correctAnswer: 'Succinylcholine',
+    explanation: 'Succinylcholine has the shortest duration of action (5-10 minutes) due to rapid hydrolysis by plasma cholinesterase.',
+  },
+  {
+    id: 17,
+    question: 'A patient with a history of pseudocholinesterase deficiency is given succinylcholine. What is the expected effect?',
+    choices: ['Prolonged paralysis', 'Tachycardia', 'Severe bradycardia', 'Malignant hyperthermia'],
+    correctAnswer: 'Prolonged paralysis',
+    explanation: 'Pseudocholinesterase deficiency leads to delayed breakdown of succinylcholine, resulting in prolonged neuromuscular blockade.',
+  },
+  {
+    id: 18,
+    question: 'What is the reversal agent for non-depolarizing neuromuscular blockers?',
+    choices: ['Neostigmine', 'Sugammadex', 'Atropine', 'Both A and B'],
+    correctAnswer: 'Both A and B',
+    explanation: 'Neostigmine (with glycopyrrolate) is used to reverse non-depolarizing blockers, while sugammadex specifically reverses aminosteroid neuromuscular blockers like rocuronium and vecuronium.',
+  },
+  {
+    id: 19,
+    question: 'Which of the following is a contraindication to epidural anesthesia?',
+    choices: ['History of back pain', 'Coagulopathy', 'Obesity', 'Previous spinal surgery'],
+    correctAnswer: 'Coagulopathy',
+    explanation: 'Coagulopathy increases the risk of epidural hematoma, making it a contraindication to epidural anesthesia.',
+  },
+  {
+    id: 20,
+    question: 'Which opioid has the longest duration of action?',
+    choices: ['Fentanyl', 'Morphine', 'Remifentanil', 'Methadone'],
+    correctAnswer: 'Methadone',
+    explanation: 'Methadone has a long half-life due to its slow elimination, making it useful for chronic pain management and opioid dependence treatment.',
+  },
+  {
+    id: 21,
+    question: 'Which of the following drugs can cause methemoglobinemia?',
+    choices: ['Lidocaine', 'Bupivacaine', 'Prilocaine', 'Ropivacaine'],
+    correctAnswer: 'Prilocaine',
+    explanation: 'Prilocaine is metabolized to o-toluidine, which can oxidize hemoglobin to methemoglobin, leading to methemoglobinemia.',
+  },
+  {
+    id: 22,
+    question: 'Which inhalational anesthetic has the lowest blood-gas partition coefficient?',
+    choices: ['Sevoflurane', 'Isoflurane', 'Desflurane', 'Halothane'],
+    correctAnswer: 'Desflurane',
+    explanation: 'Desflurane has the lowest blood-gas partition coefficient, leading to rapid onset and emergence from anesthesia.',
+  },
+  {
+    id: 23,
+    question: 'What is the mechanism of action of dantrolene in malignant hyperthermia?',
+    choices: ['Blocks ryanodine receptors', 'Inhibits acetylcholinesterase', 'Increases GABAergic activity', 'Reduces intracellular calcium release'],
+    correctAnswer: 'Blocks ryanodine receptors',
+    explanation: 'Dantrolene inhibits ryanodine receptors in skeletal muscle, preventing excessive calcium release that causes malignant hyperthermia.',
+  },
+  {
+    id: 24,
+    question: 'Which of the following anesthetic agents is contraindicated in patients with increased intracranial pressure?',
+    choices: ['Propofol', 'Thiopental', 'Ketamine', 'Etomidate'],
+    correctAnswer: 'Ketamine',
+    explanation: 'Ketamine increases cerebral blood flow and intracranial pressure, making it contraindicated in patients with elevated ICP.',
+  },
+  {
+    id: 25,
+    question: 'Which local anesthetic has the highest cardiotoxicity risk?',
+    choices: ['Lidocaine', 'Bupivacaine', 'Mepivacaine', 'Ropivacaine'],
+    correctAnswer: 'Bupivacaine',
+    explanation: 'Bupivacaine has the highest cardiotoxicity risk due to its high lipid solubility and strong binding to cardiac sodium channels.',
+  },
+  // 26-60 (Continue similarly)
 ];
 
 export default anesthesiologyQuestions;
