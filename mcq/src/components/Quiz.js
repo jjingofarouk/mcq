@@ -1,38 +1,34 @@
 import React, { useState } from 'react';
 
 // Import all specialties
-import cardiologyQuestions from './data/cardiology';
-import dermatologyQuestions from './data/dermatology';
-import endocrinologyQuestions from './data/endocrinology';
-import gastroenterologyQuestions from './data/gastroenterology';
-import gynecologyQuestions from './data/gynecology';
-import infectiousDiseaseQuestions from './data/infectiousDisease';
-import internalMedicineQuestions from './data/internalMedicine';
-import nephrologyQuestions from './data/nephrology';
-import neurologyQuestions from './data/neurology';
-import obstetricsQuestions from './data/obstetrics';
-import ophthalmologyQuestions from './data/ophthalmology';
-import orthopedicsQuestions from './data/orthopedics';
-import pediatricsQuestions from './data/pediatrics';
-import pulmonologyQuestions from './data/pulmonology';
-import rheumatologyQuestions from './data/rheumatology';
-import surgeryQuestions from './data/surgery';
-import toxicologyQuestions from './data/toxicology';
-import urologyQuestions from './data/urology';
-import hematologyQuestions from './data/hematology';
-import anesthesiologyQuestions from './data/anesthesiology';
-import plasticSurgeryQuestions from './data/plasticSurgery';
-import familyMedicineQuestions from './data/familyMedicine';
-import pathololgyQuestions from './data/pathology';
-import otolaryngologyQuestions from './data/otolaryngology';
-import emergencyMedicineQuestions from './data/emergencyMedicine';
+import cardiologyQuestions from '../data/cardiology';
+import dermatologyQuestions from '../data/dermatology';
+import endocrinologyQuestions from '../data/endocrinology';
+import gastroenterologyQuestions from '../data/gastroenterology';
+import infectiousDiseaseQuestions from '../data/infectiousdiseases';
+import internalMedicineQuestions from '../data/internalMedicine';
+import nephrologyQuestions from '../data/nephrology';
+import neurologyQuestions from '../data/neurology';
+import obstetricsQuestions from '../data/obstetricsGynecology';
+import ophthalmologyQuestions from '../data/ophthalmology';
+import orthopedicsQuestions from '../data/orthopedics';
+import pediatricsQuestions from '../data/pediatrics';
+import pulmonologyQuestions from '../data/pulmonology';
+import rheumatologyQuestions from '../data/rheumatology';
+import urologyQuestions from '../data/urology';
+import hematologyQuestions from '../data/hematology';
+import anesthesiologyQuestions from '../data/anesthesiology';
+import plasticSurgeryQuestions from '../data/plasticSurgery';
+import familyMedicineQuestions from '../data/familyMedicine';
+import pathololgyQuestions from '../data/pathology';
+import otolaryngologyQuestions from '../data/otolaryngology';
+import emergencyMedicineQuestions from '../data/emergencyMedicine';
 
 const specialties = [
   { name: 'Cardiology', questions: cardiologyQuestions },
   { name: 'Dermatology', questions: dermatologyQuestions },
   { name: 'Endocrinology', questions: endocrinologyQuestions },
   { name: 'Gastroenterology', questions: gastroenterologyQuestions },
-  { name: 'Gynecology', questions: gynecologyQuestions },
   { name: 'Infectious Disease', questions: infectiousDiseaseQuestions },
   { name: 'Internal Medicine', questions: internalMedicineQuestions },
   { name: 'Nephrology', questions: nephrologyQuestions },
@@ -43,8 +39,6 @@ const specialties = [
   { name: 'Pediatrics', questions: pediatricsQuestions },
   { name: 'Pulmonology', questions: pulmonologyQuestions },
   { name: 'Rheumatology', questions: rheumatologyQuestions },
-  { name: 'Surgery', questions: surgeryQuestions },
-  { name: 'Toxicology', questions: toxicologyQuestions },
   { name: 'Urology', questions: urologyQuestions },
   { name: 'Hematology', questions: hematologyQuestions },
   { name: 'Anesthesiology', questions: anesthesiologyQuestions },
