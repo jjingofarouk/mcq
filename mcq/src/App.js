@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <h1>Medical MCQ Quiz</h1>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<SpecialtySelector />} />
           <Route path="/specialty" element={<SpecialtySelector />} />
           <Route path="/quiz/:specialtyId/:questionId" element={<Quiz />} />
           <Route path="/results" element={<Results />} />
