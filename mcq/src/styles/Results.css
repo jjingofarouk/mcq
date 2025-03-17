@@ -1,0 +1,147 @@
+/* Results.css */
+.results-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(45, 58, 58, 0.1); /* Using --dark with opacity */
+  font-family: 'Inter', sans-serif; /* Modern, clean font - assume imported elsewhere */
+}
+
+/* Header */
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--light-gray);
+  padding-bottom: 1rem;
+}
+
+.results-header h3 {
+  color: var(--primary-dark);
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.timestamp {
+  color: var(--medium-gray);
+  font-size: 0.9rem;
+}
+
+/* Score Summary */
+.score-summary {
+  margin-bottom: 2rem;
+}
+
+.result-message {
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.result-message:hover {
+  transform: translateY(-2px);
+}
+
+.result-message.excellent {
+  background: var(--success);
+  color: var(--white);
+}
+
+.result-message.good {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.result-message.needs-improvement {
+  background: var(--error);
+  color: var(--white);
+}
+
+.score-text {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.status-text {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.score-details {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--off-white);
+  border-radius: 8px;
+  color: var(--dark-gray);
+  font-size: 0.95rem;
+  border: 1px solid var(--light-gray);
+}
+
+/* Sections */
+.user-section,
+.review-section {
+  margin-bottom: 2rem;
+}
+
+/* Navigation */
+.results-navigation {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--secondary-color);
+  color: var(--white);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-dark);
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .results-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .result-message {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .results-navigation {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
