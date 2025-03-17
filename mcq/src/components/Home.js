@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SpecialtySelector from '../components/SpecialtySelector';
+import SpecialtySelector from './components/SpecialtySelector';
 
 const Banner = () => (
   <div style={{ backgroundColor: '#4CAF50', color: 'white', padding: '20px', textAlign: 'center' }}>
