@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import QuestionCard from './QuestionCard';
-
-// Import all specialty question sets as default exports
+import ProgressTracker from './ProgressTracker';
+import Timer from './Timer';
+import QuizSettings from './QuizSettings';
 import anesthesiologyQuestions from '../data/anesthesiology';
 import cardiologyQuestions from '../data/cardiology';
 import dermatologyQuestions from '../data/dermatology';
@@ -26,7 +27,6 @@ import pathologyQuestions from '../data/pathology';
 import otolaryngologyQuestions from '../data/otolaryngology';
 import emergencyMedicineQuestions from '../data/emergencyMedicine';
 
-// Map specialty IDs (routes) to their question sets
 const specialtyMap = {
   anesthesiology: anesthesiologyQuestions,
   cardiology: cardiologyQuestions,
@@ -51,17 +51,6 @@ const specialtyMap = {
   otolaryngology: otolaryngologyQuestions,
   emergencyMedicine: emergencyMedicineQuestions,
 };
-
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import QuestionCard from './QuestionCard';
-import ProgressTracker from './ProgressTracker';
-import Timer from './Timer';
-import QuizSettings from './QuizSettings'; // Add this
-import anesthesiologyQuestions from '../data/anesthesiology';
-import cardiologyQuestions from '../data/cardiology';
-// ... other imports
-
 
 function Quiz() {
   const { specialtyId } = useParams();
@@ -96,14 +85,14 @@ function Quiz() {
     if (currentQuestionIndex + 1 < questions.length) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      navigate('/results', { 
-        state: { 
-          score, 
-          total: questions.length, 
-          answers: userAnswers, 
+      navigate('/results', {
+        state: {
+          score,
+          total: questions.length,
+          answers: userAnswers,
           questions,
-          onQuizComplete: { score: (score / questions.length) * 100 }
-        } 
+          onQuizComplete: { score: (score / questions.length) * 100 },
+        },
       });
     }
   };
@@ -127,7 +116,7 @@ function Quiz() {
   return (
     <div className="quiz-container">
       <h1>{specialtyId.charAt(0).toUpperCase() + specialtyId.slice(1)} Quiz</h1>
-      <QuizSettings onSettingsChange={handleSettingsChange} /> {/* Add here */}
+      <QuizSettings onSettingsChange={handleSettingsChange} />
       <ProgressTracker current={currentQuestionIndex + 1} total={questions.length} />
       <Timer timeLimit={60} onTimeUp={handleTimeUp} key={currentQuestionIndex} />
       <QuestionCard
