@@ -1,7 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import QuestionCard from './QuestionCard';
-import * as data from '../data'; // Import all specialty data
+
+// Import all specialty question sets as default exports
+import anesthesiologyQuestions from '../data/anesthesiology';
+import cardiologyQuestions from '../data/cardiology';
+import dermatologyQuestions from '../data/dermatology';
+import endocrinologyQuestions from '../data/endocrinology';
+import gastroenterologyQuestions from '../data/gastroenterology';
+import infectiousdiseasesQuestions from '../data/infectiousdiseases';
+import internalMedicineQuestions from '../data/internalMedicine';
+import nephrologyQuestions from '../data/nephrology';
+import neurologyQuestions from '../data/neurology';
+import obstetricsGynecologyQuestions from '../data/obstetricsGynecology';
+import ophthalmologyQuestions from '../data/ophthalmology';
+import orthopedicsQuestions from '../data/orthopedics';
+import pediatricsQuestions from '../data/pediatrics';
+import pulmonologyQuestions from '../data/pulmonology';
+import rheumatologyQuestions from '../data/rheumatology';
+import urologyQuestions from '../data/urology';
+import hematologyQuestions from '../data/hematology';
+import plasticSurgeryQuestions from '../data/plasticSurgery';
+import familyMedicineQuestions from '../data/familyMedicine';
+import pathologyQuestions from '../data/pathology';
+import otolaryngologyQuestions from '../data/otolaryngology';
+import emergencyMedicineQuestions from '../data/emergencyMedicine';
+
+// Map specialty IDs (routes) to their question sets
+const specialtyMap = {
+  anesthesiology: anesthesiologyQuestions,
+  cardiology: cardiologyQuestions,
+  dermatology: dermatologyQuestions,
+  endocrinology: endocrinologyQuestions,
+  gastroenterology: gastroenterologyQuestions,
+  infectiousdiseases: infectiousdiseasesQuestions,
+  internalMedicine: internalMedicineQuestions,
+  nephrology: nephrologyQuestions,
+  neurology: neurologyQuestions,
+  obstetricsGynecology: obstetricsGynecologyQuestions,
+  ophthalmology: ophthalmologyQuestions,
+  orthopedics: orthopedicsQuestions,
+  pediatrics: pediatricsQuestions,
+  pulmonology: pulmonologyQuestions,
+  rheumatology: rheumatologyQuestions,
+  urology: urologyQuestions,
+  hematology: hematologyQuestions,
+  plasticSurgery: plasticSurgeryQuestions,
+  familyMedicine: familyMedicineQuestions,
+  pathology: pathologyQuestions,
+  otolaryngology: otolaryngologyQuestions,
+  emergencyMedicine: emergencyMedicineQuestions,
+};
 
 function Quiz() {
   const { specialtyId } = useParams(); // e.g., "anesthesiology"
@@ -13,7 +62,7 @@ function Quiz() {
   const [showFeedback, setShowFeedback] = useState(false);
 
   useEffect(() => {
-    const questionSet = data[`${specialtyId}Questions`];
+    const questionSet = specialtyMap[specialtyId];
     setQuestions(questionSet || []);
   }, [specialtyId]);
 
@@ -34,7 +83,7 @@ function Quiz() {
     }
   };
 
-  if (questions.length === 0) return <p>Loading questions...</p>;
+  if (questions.length === 0) return <p>No questions found for this specialty.</p>;
 
   const currentQuestion = questions[currentQuestionIndex];
 
