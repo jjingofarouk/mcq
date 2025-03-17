@@ -11,7 +11,7 @@ function Navbar() {
         </Link>
         <div>
           <Link to="/">Home</Link>
-          <UserProfile /> {/* No onQuizComplete here; it’s updated in Results */}
+          <UserProfile minimal /> {/* Pass minimal prop to show only toggle */}
         </div>
       </div>
     </nav>
