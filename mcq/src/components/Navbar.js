@@ -11,7 +11,7 @@ function Navbar() {
         </Link>
         <div>
           <Link to="/">Home</Link>
-          <UserProfile />
+          <UserProfile /> {/* No onQuizComplete here; it’s updated in Results */}
         </div>
       </div>
     </nav>
