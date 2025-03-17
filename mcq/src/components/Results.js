@@ -19,7 +19,7 @@ function Results() {
       >
         Your Score: {score} / {total} ({((score / total) * 100).toFixed(1)}%)
       </p>
-      <UserProfile onQuizComplete={onQuizComplete} />
+      <UserProfile onQuizComplete={onQuizComplete} /> {/* Full version here */}
       <ReviewAnswers answers={answers} questions={questions} />
       <Link to="/">Back to Home</Link>
     </div>
