@@ -1,106 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import QuestionCard from './QuestionCard';
+import * as data from '../data'; // Import all specialty data
 
-// Import all specialties
-import cardiologyQuestions from '../data/cardiology';
-import dermatologyQuestions from '../data/dermatology';
-import endocrinologyQuestions from '../data/endocrinology';
-import gastroenterologyQuestions from '../data/gastroenterology';
-import infectiousDiseaseQuestions from '../data/infectiousdiseases';
-import internalMedicineQuestions from '../data/internalMedicine';
-import nephrologyQuestions from '../data/nephrology';
-import neurologyQuestions from '../data/neurology';
-import obstetricsQuestions from '../data/obstetricsGynecology';
-import ophthalmologyQuestions from '../data/ophthalmology';
-import orthopedicsQuestions from '../data/orthopedics';
-import pediatricsQuestions from '../data/pediatrics';
-import pulmonologyQuestions from '../data/pulmonology';
-import rheumatologyQuestions from '../data/rheumatology';
-import urologyQuestions from '../data/urology';
-import hematologyQuestions from '../data/hematology';
-import anesthesiologyQuestions from '../data/anesthesiology';
-import plasticSurgeryQuestions from '../data/plasticSurgery';
-import familyMedicineQuestions from '../data/familyMedicine';
-import pathololgyQuestions from '../data/pathology';
-import otolaryngologyQuestions from '../data/otolaryngology';
-import emergencyMedicineQuestions from '../data/emergencyMedicine';
-
-const specialties = [
-  { name: 'Cardiology', questions: cardiologyQuestions },
-  { name: 'Dermatology', questions: dermatologyQuestions },
-  { name: 'Endocrinology', questions: endocrinologyQuestions },
-  { name: 'Gastroenterology', questions: gastroenterologyQuestions },
-  { name: 'Infectious Disease', questions: infectiousDiseaseQuestions },
-  { name: 'Internal Medicine', questions: internalMedicineQuestions },
-  { name: 'Nephrology', questions: nephrologyQuestions },
-  { name: 'Neurology', questions: neurologyQuestions },
-  { name: 'Obstetrics', questions: obstetricsQuestions },
-  { name: 'Ophthalmology', questions: ophthalmologyQuestions },
-  { name: 'Orthopedics', questions: orthopedicsQuestions },
-  { name: 'Pediatrics', questions: pediatricsQuestions },
-  { name: 'Pulmonology', questions: pulmonologyQuestions },
-  { name: 'Rheumatology', questions: rheumatologyQuestions },
-  { name: 'Urology', questions: urologyQuestions },
-  { name: 'Hematology', questions: hematologyQuestions },
-  { name: 'Anesthesiology', questions: anesthesiologyQuestions },
-  { name: 'Plastic Surgery', questions: plasticSurgeryQuestions },
-  { name: 'Family Medicine', questions: familyMedicineQuestions },
-  { name: 'Pathology', questions: pathololgyQuestions },
-  { name: 'Otolaryngology', questions: otolaryngologyQuestions },
-  { name: 'Emergency Medicine', questions: emergencyMedicineQuestions },
-];
-
-const Quiz = () => {
-  const [selectedSpecialty, setSelectedSpecialty] = useState(specialties[0].name);
+function Quiz() {
+  const { specialtyId } = useParams(); // e.g., "anesthesiology"
+  const navigate = useNavigate();
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [score, setScore] = useState(0);
+  const [showFeedback, setShowFeedback] = useState(false);
 
-  const handleAnswer = (selectedAnswer) => {
-    const currentSpecialty = specialties.find(specialty => specialty.name === selectedSpecialty);
-    const currentQuestion = currentSpecialty.questions[currentQuestionIndex];
+  useEffect(() => {
+    const questionSet = data[`${specialtyId}Questions`];
+    setQuestions(questionSet || []);
+  }, [specialtyId]);
 
-    if (selectedAnswer === currentQuestion.correctAnswer) {
-      setScore(score + 1);
-    }
+  const handleAnswerSelect = (answer) => {
+    setSelectedAnswer(answer);
+    setShowFeedback(true);
+    const isCorrect = answer === questions[currentQuestionIndex].correctAnswer;
+    if (isCorrect) setScore(score + 1);
+  };
 
-    if (currentQuestionIndex < currentSpecialty.questions.length - 1) {
+  const handleNext = () => {
+    setShowFeedback(false);
+    setSelectedAnswer(null);
+    if (currentQuestionIndex + 1 < questions.length) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      alert(`Quiz Complete! Your score is: ${score + 1}`);
+      navigate('/results', { state: { score, total: questions.length } });
     }
   };
 
-  const handleSpecialtyChange = (event) => {
-    setSelectedSpecialty(event.target.value);
-    setCurrentQuestionIndex(0);
-    setScore(0);
-  };
+  if (questions.length === 0) return <p>Loading questions...</p>;
 
-  const currentSpecialty = specialties.find(specialty => specialty.name === selectedSpecialty);
-  const currentQuestion = currentSpecialty.questions[currentQuestionIndex];
+  const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div>
-      <h1>Medical Specialty Quiz</h1>
-      <select value={selectedSpecialty} onChange={handleSpecialtyChange}>
-        {specialties.map((specialty, index) => (
-          <option key={index} value={specialty.name}>
-            {specialty.name}
-          </option>
-        ))}
-      </select>
-
-      <div>
-        <h2>{currentQuestion.question}</h2>
+    <div className="quiz-container">
+      <h1>{specialtyId.charAt(0).toUpperCase() + specialtyId.slice(1)} Quiz</h1>
+      <p>Question {currentQuestionIndex + 1} of {questions.length}</p>
+      <QuestionCard
+        question={currentQuestion.question}
+        choices={currentQuestion.choices}
+        selectedAnswer={selectedAnswer}
+        onAnswerSelect={handleAnswerSelect}
+      />
+      {showFeedback && (
         <div>
-          {currentQuestion.choices.map((choice, index) => (
-            <button key={index} onClick={() => handleAnswer(choice)}>
-              {choice}
-            </button>
-          ))}
+          <p>{selectedAnswer === currentQuestion.correctAnswer ? 'Correct!' : 'Incorrect'}</p>
+          <p><strong>Explanation:</strong> {currentQuestion.explanation}</p>
+          <button onClick={handleNext}>Next</button>
         </div>
-      </div>
+      )}
     </div>
   );
-};
+}
 
 export default Quiz;
