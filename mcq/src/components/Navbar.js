@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 function Navbar() {
   return (
@@ -10,7 +11,7 @@ function Navbar() {
         </Link>
         <div>
           <Link to="/">Home</Link>
-          <Link to="/specialties">Specialties</Link>
+          <UserProfile />
         </div>
       </div>
     </nav>
