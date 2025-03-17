@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import SearchBar from './SearchBar'; // Add this
+import SearchBar from './SearchBar';
 
 const specialties = [
   { id: 1, name: 'Cardiology', route: 'cardiology' },
@@ -28,11 +27,6 @@ const specialties = [
   { id: 22, name: 'Emergency Medicine', route: 'emergencyMedicine' },
 ];
 
-
-
-
-
-
 function SpecialtySelector() {
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -43,7 +37,7 @@ function SpecialtySelector() {
   return (
     <div className="specialty-selector">
       <h2>Select a Specialty</h2>
-      <SearchBar onSearch={setSearchQuery} /> {/* Add here */}
+      <SearchBar onSearch={setSearchQuery} />
       <ul>
         {filteredSpecialties.map((specialty) => (
           <li key={specialty.id}>
