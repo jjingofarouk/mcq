@@ -3,7 +3,7 @@ import SpecialtySelector from '../components/SpecialtySelector';
 
 const Banner = () => (
   <div className="banner">
-    <h1>Welcome to the Medical MCQ App</h1>
+    <h1>Welcome to the ClinIQ App</h1>
     <p>Prepare for medical exams and expand your knowledge across specialties!</p>
   </div>
 );

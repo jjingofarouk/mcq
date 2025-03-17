@@ -7,7 +7,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/">
-          <h1>Medical MCQ</h1>
+          <h1>ClinIQ</h1>
         </Link>
         <div>
           <Link to="/">Home</Link>

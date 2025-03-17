@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import ReviewAnswers from './ReviewAnswers';
 import UserProfile from './UserProfile';
-import './Results.css'; // Assuming you have a separate CSS file
+import '../styles/Results.css'; // Assuming you have a separate CSS file
 
 function Results() {
   const { state } = useLocation();
