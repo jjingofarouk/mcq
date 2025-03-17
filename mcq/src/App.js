@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import SpecialtySelector from './components/SpecialtySelector';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Home from './pages/Home';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
 import './App.css';
@@ -10,12 +11,13 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/specialties" element={<SpecialtySelector />} />
           <Route path="/quiz/:specialtyId" element={<Quiz />} />
           <Route path="/results" element={<Results />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
