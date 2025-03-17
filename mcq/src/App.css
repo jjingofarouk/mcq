@@ -306,40 +306,7 @@ body {
   opacity: 1;
 }
 
-/* Results Styles */
-.results-container {
-  max-width: 700px;
-  margin: 2rem auto;
-  padding: 2.5rem;
-  background: var(--white);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.results-container h3 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary-dark);
-  margin-bottom: 1.5rem;
-}
-
-.result-message {
-  font-size: 1.25rem;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-}
-
-.results-container a {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.results-container a:hover {
-  color: var(--primary-dark);
-}
+ 
 
 /* Responsive Design */
 @media (max-width: 768px) {
