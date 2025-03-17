@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './Home'; // Import the new Home component
+import Home from './components/Home'; // Import the new Home component
 import Quiz from './components/Quiz';
 import Results from './components/Results';
 import SpecialtySelector from './components/SpecialtySelector';

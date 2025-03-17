@@ -70,7 +70,6 @@ const anesthesiologyQuestions = [
     explanation: 'Atracurium is metabolized by Hofmann elimination and ester hydrolysis, making it independent of renal function. Other agents like rocuronium and vecuronium are partially dependent on renal excretion and may accumulate in patients with CKD.',
   },
   // Add 190 more questions following the same format...
-const anesthesiologyQuestions = [
   // Previous questions (1-10) remain unchanged
   
   {
