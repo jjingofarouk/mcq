@@ -448,3 +448,16 @@ body {
   border-color: var(--primary-color);
   outline: none;
 }
+
+.quiz-settings {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.quiz-settings select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 2px solid var(--light-gray);
+}
+
+
