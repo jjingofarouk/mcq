@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import ReviewAnswers from './ReviewAnswers';
-import UserProfile from './UserProfile'; // Add this
+import UserProfile from './UserProfile';
 
 function Results() {
   const { state } = useLocation();
@@ -19,7 +19,7 @@ function Results() {
       >
         Your Score: {score} / {total} ({((score / total) * 100).toFixed(1)}%)
       </p>
-      <UserProfile onQuizComplete={onQuizComplete} /> {/* Add here */}
+      <UserProfile onQuizComplete={onQuizComplete} />
       <ReviewAnswers answers={answers} questions={questions} />
       <Link to="/">Back to Home</Link>
     </div>
