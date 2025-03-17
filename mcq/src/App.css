@@ -396,3 +396,20 @@ body {
   font-weight: bold;
 }
 
+.review-answers {
+  margin-top: 2rem;
+}
+
+.review-item {
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: var(--off-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.review-item summary {
+  cursor: pointer;
+  color: var(--primary-dark);
+}
+
