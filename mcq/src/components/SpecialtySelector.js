@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import SearchBar from './SearchBar'; // Add this
+
 const specialties = [
   { id: 1, name: 'Cardiology', route: 'cardiology' },
   { id: 2, name: 'Dermatology', route: 'dermatology' },
@@ -26,12 +28,24 @@ const specialties = [
   { id: 22, name: 'Emergency Medicine', route: 'emergencyMedicine' },
 ];
 
+
+
+
+
+
 function SpecialtySelector() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredSpecialties = specialties.filter((specialty) =>
+    specialty.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="specialty-selector">
       <h2>Select a Specialty</h2>
+      <SearchBar onSearch={setSearchQuery} /> {/* Add here */}
       <ul>
-        {specialties.map((specialty) => (
+        {filteredSpecialties.map((specialty) => (
           <li key={specialty.id}>
             <Link to={`/quiz/${specialty.route}`}>{specialty.name}</Link>
           </li>
