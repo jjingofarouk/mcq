@@ -8,7 +8,7 @@ import anesthesiologyQuestions from '../data/anesthesiology';
 import cardiologyQuestions from '../data/cardiology';
 import dermatologyQuestions from '../data/dermatology';
 import endocrinologyQuestions from '../data/endocrinology';
-import gastroenterologyQuestions from '../data/gastroenterology';
+import gastroenterologyQuestions from '../data/gastroenterology'; // Static array
 import infectiousdiseasesQuestions from '../data/infectiousdiseases';
 import internalMedicineQuestions from '../data/internalMedicine';
 import nephrologyQuestions from '../data/nephrology';
@@ -22,7 +22,7 @@ import rheumatologyQuestions from '../data/rheumatology';
 import urologyQuestions from '../data/urology';
 import hematologyQuestions from '../data/hematology';
 import plasticSurgeryQuestions from '../data/plasticSurgery';
-import familyMedicineQuestions from '../data/familyMedicine';
+import familyMedicineQuestions from '../data/familyMedicine'; // Infinite generator
 import pathologyQuestions from '../data/pathology';
 import otolaryngologyQuestions from '../data/otolaryngology';
 import emergencyMedicineQuestions from '../data/emergencyMedicine';
@@ -32,7 +32,7 @@ const specialtyMap = {
   cardiology: cardiologyQuestions,
   dermatology: dermatologyQuestions,
   endocrinology: endocrinologyQuestions,
-  gastroenterology: gastroenterologyQuestions,
+  gastroenterology: gastroenterologyQuestions, // Static array
   infectiousdiseases: infectiousdiseasesQuestions,
   internalMedicine: internalMedicineQuestions,
   nephrology: nephrologyQuestions,
@@ -46,11 +46,29 @@ const specialtyMap = {
   urology: urologyQuestions,
   hematology: hematologyQuestions,
   plasticSurgery: plasticSurgeryQuestions,
-  familyMedicine: familyMedicineQuestions,
+  familyMedicine: familyMedicineQuestions, // Generator function
   pathology: pathologyQuestions,
   otolaryngology: otolaryngologyQuestions,
   emergencyMedicine: emergencyMedicineQuestions,
 };
+
+// Utility function to fetch questions from either a static array or a generator
+function getQuestionsFromSource(source, count, startId = 1) {
+  if (typeof source === 'function') {
+    // Generator case (e.g., familyMedicineQuestions)
+    const generator = source(startId);
+    const questions = [];
+    for (let i = 0; i < count; i++) {
+      questions.push(generator.next().value);
+    }
+    return questions;
+  } else {
+    // Static array case (e.g., gastroenterologyQuestions)
+    const shuffled = [...source].sort(() => 0.5 - Math.random());
+    // If the array has fewer questions than requested, return all available
+    return shuffled.slice(0, Math.min(count, source.length));
+  }
+}
 
 function Quiz() {
   const { specialtyId } = useParams();
@@ -64,10 +82,10 @@ function Quiz() {
   const [questionCount, setQuestionCount] = useState(10); // Default to 10
 
   useEffect(() => {
-    const questionSet = specialtyMap[specialtyId];
-    if (questionSet) {
-      const shuffled = [...questionSet].sort(() => 0.5 - Math.random()); // Randomize
-      setQuestions(shuffled.slice(0, questionCount)); // Limit to questionCount
+    const questionSource = specialtyMap[specialtyId];
+    if (questionSource) {
+      const fetchedQuestions = getQuestionsFromSource(questionSource, questionCount, 2); // Start ID after existing
+      setQuestions(fetchedQuestions);
     }
   }, [specialtyId, questionCount]);
 
@@ -76,7 +94,11 @@ function Quiz() {
     setShowFeedback(true);
     const isCorrect = answer === questions[currentQuestionIndex].correctAnswer;
     if (isCorrect) setScore(score + 1);
-    setUserAnswers((prev) => [...prev.slice(0, currentQuestionIndex), answer, ...prev.slice(currentQuestionIndex + 1)]);
+    setUserAnswers((prev) => [
+      ...prev.slice(0, currentQuestionIndex),
+      answer,
+      ...prev.slice(currentQuestionIndex + 1),
+    ]);
   };
 
   const handleNext = () => {
@@ -99,7 +121,11 @@ function Quiz() {
 
   const handleTimeUp = () => {
     setShowFeedback(true);
-    setUserAnswers((prev) => [...prev.slice(0, currentQuestionIndex), null, ...prev.slice(currentQuestionIndex + 1)]);
+    setUserAnswers((prev) => [
+      ...prev.slice(0, currentQuestionIndex),
+      null,
+      ...prev.slice(currentQuestionIndex + 1),
+    ]);
   };
 
   const handleSettingsChange = (settings) => {
