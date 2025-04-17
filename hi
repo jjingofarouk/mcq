@@ -1,0 +1,21 @@
+# Database connection (from your Neon integration)
+DATABASE_URL=postgres://neondb_owner:npg_RDf20qHAMkBc@ep-rapid-lake-a1oiqs63-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
+
+# Application URL (for local development)
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# SandBox PayPal Keys
+NEXT_PUBLIC_SANDBOX_CLIENT_ID=AedmfgFuxSyxEw0OWR8yCbrju0gqnUV7-jx8wZ7iKNpFPRxTB5GYhYHbK33XYi1pmyr-vfzUJo-af7KJ
+PAYPAL_SANDBOX_SECRET=EKoV7vi2_HOSe3Lo4brVkH4wBLAlnuNzp9hScd68lgisJ-7ux4CJwqWMCL3xlh023z0OZ4sNhENcHIme
+
+# Production Paypal Keys
+NEXT_PUBLIC_PAYPAL_CLIENT_ID=AYap--reNa7pbRs80UDN4-LTq6_CVErRYB-IxJSwxiAm1Pu5bIIK3B6DpidlvD5c8u_rzMZDT392H9kk
+PAYPAL_SECRET=EHSRh5D87Y78LMFBD-OhJDhMX95cMyRV7B5VHErHw0YEHThN5WDGmR-gxtHOQPohQPxOn2o_fUEJve-t
+
+# Secure Email Details
+#EMAIL_SERVER=
+#EMAIL_PORT=
+#EMAIL_USER=
+#EMAIL_PASSWORD=
+#EMAIL_FROM=
+#EMAIL_SECURE=
