@@ -1,92 +1,97 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import UserProfile from './UserProfile';
+import { Menu, X, Home, BookOpen, ChartBar, Award, User } from 'lucide-react';
+import './Navbar.css';
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
-    { to: '/', label: 'Home' },
-    { to: '/quizzes', label: 'Quizzes' },
-    { to: '/progress', label: 'Progress' },
-    { to: '/leaderboard', label: 'Leaderboard' },
+    { to: '/', label: 'Home', icon: <Home size={20} /> },
+    { to: '/quizzes', label: 'Quizzes', icon: <BookOpen size={20} /> },
+    { to: '/progress', label: 'Progress', icon: <ChartBar size={20} /> },
+    { to: '/leaderboard', label: 'Leaderboard', icon: <Award size={20} /> },
   ];
 
   return (
-    <nav className="bg-white shadow-lg fixed w-full z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0">
-              <h1 className="text-2xl font-bold text-blue-600">ClinIQ</h1>
-            </Link>
-          </div>
+    <>
+      <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+        <div className="navbar-container">
+          <Link to="/" className="navbar-logo">
+            <h1 className="text-xl font-bold text-blue-600">ClinIQ</h1>
+          </Link>
           
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                to={item.to}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                {item.label}
-              </Link>
-            ))}
-            <UserProfile minimal />
-          </div>
+          <button 
+            className="navbar-toggle"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </nav>
 
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none"
+      {/* Slide-in menu */}
+      <div className={`navbar-menu ${isOpen ? 'open' : ''}`}>
+        <div className="navbar-menu-header">
+          <h2 className="text-lg font-semibold">Menu</h2>
+          <button 
+            className="navbar-close"
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        <div className="navbar-menu-items">
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              to={item.to}
+              className="navbar-item"
+              onClick={() => setIsOpen(false)}
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+              <span className="navbar-item-icon">{item.icon}</span>
+              <span>{item.label}</span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="navbar-profile">
+          <div className="flex items-center gap-3 p-4 border-t border-gray-100">
+            <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+              <User size={20} className="text-blue-600" />
+            </div>
+            <div>
+              <p className="text-sm font-medium">Dr. Jane Smith</p>
+              <p className="text-xs text-gray-500">View Profile</p>
+            </div>
           </div>
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                to={item.to}
-                className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <div className="px-3 py-2">
-              <UserProfile minimal />
-            </div>
-          </div>
-        </div>
-      )}
-    </nav>
+      {/* Overlay that appears behind the menu */}
+      <div 
+        className={`navbar-overlay ${isOpen ? 'open' : ''}`} 
+        onClick={() => setIsOpen(false)}
+      />
+    </>
   );
 }
 
