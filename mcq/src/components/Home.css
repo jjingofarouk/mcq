@@ -284,7 +284,7 @@
 }
 
 .testimonial-quote::before {
-  content: """;
+  content: "";
   font-size: 4rem;
   color: #e2e8f0;
   position: absolute;
