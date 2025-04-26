@@ -197,21 +197,21 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       quote: "ClinIQ has been instrumental in my USMLE Step 1 preparation. The questions are challenging and the explanations are concise yet comprehensive.",
-      author: "Dr. Sarah Johnson",
+      author: "Dr. Shadrah",
       title: "Resident, Internal Medicine",
-      image: "/api/placeholder/64/64"
+      image: "/assets/images/testimonials/flower.png"
     },
     {
       quote: "The adaptive learning algorithm really helped me focus on my weak areas. I saw a 15% improvement in my practice exam scores after just one month.",
       author: "Dr. Michael Chen",
-      title: "Cardiology Fellow",
-      image: "/api/placeholder/64/64"
+      title: "Medical Student",
+      image: "/assets/images/testimonials/jjingo.png"
     },
     {
       quote: "As a department head, I recommend ClinIQ to all our residents. The quality of questions and clinical scenarios are excellent for building clinical reasoning.",
-      author: "Dr. Rebecca Martinez",
+      author: "Dr. Solomom Ssekiranda",
       title: "Chief of Emergency Medicine",
-      image: "/api/placeholder/64/64"
+      image: "/assets/images/testimonials/solomon.png"
     }
   ];
   
