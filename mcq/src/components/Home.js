@@ -12,21 +12,20 @@ import {
   ChevronRight
 } from 'lucide-react';
 import SpecialtySelector from '../components/SpecialtySelector';
+import homeImage from '../assets/images/bgs/home.png';
 import './Home.css';
 
 const Home = () => {
   const [animateStats, setAnimateStats] = useState(false);
   
   useEffect(() => {
-    // Trigger stats animation when component mounts
     setAnimateStats(true);
     
-    // Add scroll event listener for parallax effects
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const heroImage = document.querySelector('.hero-image');
       if (heroImage) {
-        heroImage.style.transform = `translateY(${scrollY * 0.2}px)`;
+        heroImage.style.transform = `translateY(${scrollY * 0.2}px) scale(1.1)`;
       }
     };
     
@@ -49,7 +48,10 @@ const Home = () => {
 const HeroBanner = () => (
   <section className="hero-section">
     <div className="hero-overlay"></div>
-    <div className="hero-image"></div>
+    <div 
+      className="hero-image"
+      style={{ backgroundImage: `url(${homeImage})` }}
+    ></div>
     <div className="hero-content">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
