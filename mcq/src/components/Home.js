@@ -12,7 +12,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import SpecialtySelector from '../components/SpecialtySelector';
-import homeImage from '../assets/images/bgs/home.png';
+import homeImage from './home.png';
 import './Home.css';
 
 const Home = () => {
