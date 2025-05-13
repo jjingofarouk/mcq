@@ -51,7 +51,7 @@ const HeroBanner = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <h1>Master Medical MCQs with MediQuiz</h1>
+        <h1>Master Medical MCQs with ClinIQ</h1>
         <p className="hero-subtitle">
           Practice with thousands of high-quality questions across 22 specialties to ace your exams and boost clinical knowledge.
         </p>
@@ -165,7 +165,7 @@ const BenefitsSection = () => {
 
   return (
     <section className="benefits-section">
-      <h2 className="section-title">Why Choose MediQuiz?</h2>
+      <h2 className="section-title">Why Choose ClinIQ?</h2>
       <p className="section-subtitle">Empowering medical professionals with the tools to succeed.</p>
       <div className="benefits-grid">
         {benefits.map((benefit, index) => (
@@ -199,7 +199,7 @@ const CTASection = () => (
   <section className="cta-section">
     <div className="cta-content">
       <h2>Ready to Ace Your Medical Exams?</h2>
-      <p>Join thousands of medical professionals mastering their exams with MediQuiz.</p>
+      <p>Join thousands of medical professionals mastering their exams with ClinIQ.</p>
       <Link to="/quizzes" className="btn-primary btn-large">
         Start Practicing Now
       </Link>
