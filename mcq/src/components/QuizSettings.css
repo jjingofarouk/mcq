@@ -1,0 +1,131 @@
+/* src/styles/QuizSettings.css */
+.quiz-settings {
+  max-width: 700px;
+  margin: 1.5rem auto;
+  padding: 0;
+}
+
+.settings-card {
+  background: var(--white);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 4px 16px rgba(46, 58, 58, 0.1);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.dark .settings-card {
+  background: var(--dark-gray);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.settings-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 58, 58, 0.15);
+}
+
+.dark .settings-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.settings-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+}
+
+.dark .settings-title {
+  color: var(--primary-light);
+}
+
+.settings-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.settings-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dark-gray);
+}
+
+.dark .settings-label {
+  color: var(--light-gray);
+}
+
+.settings-select {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid var(--light-gray);
+  border-radius: var(--border-radius-sm);
+  background: var(--off-white);
+  color: var(--dark-gray);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237e8c8c' d='M10.293 3.293 6 7.586 1.707 3.293A1 1 0 0 0 .293 4.707l5 5a1 1 0 0 0 1.414 0l5-5a1 1 0 1 0-1.414-1.414z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px;
+}
+
+.dark .settings-select {
+  background: var(--dark);
+  border-color: var(--medium-gray);
+  color: var(--light-gray);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a0a0a0' d='M10.293 3.293 6 7.586 1.707 3.293A1 1 0 0 0 .293 4.707l5 5a1 1 0 0 0 1.414 0l5-5a1 1 0 1 0-1.414-1.414z'/%3E%3C/svg%3E");
+}
+
+.settings-select:hover {
+  border-color: var(--primary-light);
+  background-color: rgba(140, 197, 191, 0.1);
+}
+
+.settings-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(58, 143, 133, 0.2);
+}
+
+@media (max-width: 768px) {
+  .quiz-settings {
+    margin: 1rem;
+  }
+
+  .settings-card {
+    padding: 1.25rem;
+  }
+
+  .settings-title {
+    font-size: 1.15rem;
+  }
+
+  .settings-label {
+    font-size: 0.95rem;
+  }
+
+  .settings-select {
+    padding: 0.65rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quiz-settings {
+    margin: 0.75rem;
+  }
+
+  .settings-card {
+    padding: 1rem;
+  }
+
+  .settings-title {
+    font-size: 1rem;
+  }
+
+  .settings-select {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
