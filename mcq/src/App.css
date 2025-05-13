@@ -1,33 +1,28 @@
-/* App.css */
 :root {
-  --primary-color: #3a8f85;  /* Sophisticated teal */
-  --primary-dark: #2c7269;   /* Deeper teal for emphasis */
-  --primary-light: #8cc5bf;  /* Softer teal for accents */
-  --secondary-color: #d68c45; /* Warm terracotta orange */
-  --secondary-dark: #b87339;  /* Deeper terracotta */
-  --secondary-light: #e9b384; /* Soft peach accent */
-  --dark: #2d3a3a;           /* Charcoal with hint of teal */
-  --dark-gray: #4d5c5c;      /* Warmer dark gray */
-  --medium-gray: #7e8c8c;    /* Sophisticated medium gray */
-  --light-gray: #d2d8d8;     /* Warmer light gray */
-  --off-white: #f8f7f5;      /* Cream off-white */
+  --primary-color: #3a8f85;
+  --primary-dark: #2c7269;
+  --primary-light: #8cc5bf;
+  --secondary-color: #d68c45;
+  --secondary-dark: #b87339;
+  --secondary-light: #e9b384;
+  --dark: #2d3a3a;
+  --dark-gray: #4d5c5c;
+  --medium-gray: #7e8c8c;
+  --light-gray: #d2d8d8;
+  --off-white: #f8f7f5;
   --white: #ffffff;
-  --success: #739e73;        /* Sage green */
-  --warning: #e6b86a;        /* Subdued gold */
-  --error: #c17b7b;          /* Muted brick red */
-  --info: #6a91ab;           /* Cool blue-gray */
-  
-  /* Additional variables for spacing and typography */
+  --success: #739e73;
+  --warning: #e6b86a;
+  --error: #c17b7b;
+  --info: #6a91ab;
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2.5rem;
-  
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
-  
   --transition-speed: 0.3s;
   --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
@@ -41,7 +36,6 @@
   --dark: #f0f0f0;
 }
 
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
@@ -59,10 +53,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-top: 96px; /* Ensure content starts below navbar */
+  padding-top: 96px;
 }
 
-/* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.3;
@@ -103,9 +96,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Layout Components */
-
-/* Button Styles */
 .btn {
   display: inline-block;
   padding: var(--spacing-sm) var(--spacing-lg);
@@ -147,7 +137,6 @@ a:hover {
   color: var(--white);
 }
 
-/* Status colors */
 .success {
   color: var(--success);
 }
@@ -164,7 +153,6 @@ a:hover {
   color: var(--info);
 }
 
-/* Card Component */
 .card {
   background-color: var(--white);
   border-radius: var(--border-radius-md);
@@ -185,7 +173,6 @@ a:hover {
   margin-top: var(--spacing-md);
 }
 
-/* Form Elements */
 input, select, textarea {
   width: 100%;
   padding: var(--spacing-sm);
@@ -207,14 +194,12 @@ label {
   font-weight: 500;
 }
 
-/* Container for main content */
 .container {
   max-width: 1200px;
   margin: var(--spacing-xl) auto;
   padding: var(--spacing-xl);
 }
 
-/* Quiz specific styles */
 .quiz-container {
   max-width: 800px;
   margin: var(--spacing-xl) auto;
@@ -254,7 +239,7 @@ label {
 }
 
 .answer-option:hover {
- ickt border-color: var(--primary-light);
+  border-color: var(--primary-light);
 }
 
 .answer-option.selected {
@@ -263,7 +248,6 @@ label {
   color: var(--dark);
 }
 
-/* Results page styles */
 .results-container {
   text-align: center;
   max-width: 800px;
@@ -282,13 +266,11 @@ label {
   margin-top: var(--spacing-xl);
 }
 
-/* Specialty selector styles */
 .specialty-selector {
   margin-top: var(--spacing-xl);
   padding: var(--spacing-lg);
 }
 
-/* Home page styles */
 .specialty-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -314,7 +296,6 @@ label {
   margin-bottom: var(--spacing-md);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;
