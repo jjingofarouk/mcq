@@ -80,7 +80,6 @@ const HeroBanner = () => (
 const QuickAccessSection = () => (
   <section className="quick-access-section">
     <div className="quick-access-container">
-      <SearchBar placeholder="Search specialties or topics..." />
       <div className="quick-links">
         <Link to="/quizzes" className="quick-link">
           <Book size={20} /> Browse Quizzes
