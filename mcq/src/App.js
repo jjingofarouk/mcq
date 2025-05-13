@@ -53,6 +53,7 @@ function App() {
             <Route path="/help" element={<Home />} />
             <Route path="/logout" element={<Home />} />
             <Route path="/review" element={<ReviewAnswers />} />
+                        <Route path="/auth" element={<AuthPage />} />
           </Routes>
         </main>
         <Footer />
