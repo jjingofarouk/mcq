@@ -1,10 +1,10 @@
 // components/Navbar.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, LogOut } from 'lucide-react';
+import { User, Sun, Moon } from 'lucide-react';
 import './Navbar.css';
 
-function Navbar({ onSidebarToggle }) {
+function Navbar({ onSidebarToggle, toggleTheme, isDarkMode }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -20,23 +20,25 @@ function Navbar({ onSidebarToggle }) {
     <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <h1 className="text-xl font-bold text-white">MediQuiz</h1>
+          <h1 className="text-xl font-bold">MediQuiz</h1>
         </Link>
 
-        <div className="navbar-links">
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/quizzes" className="nav-link">Quizzes</Link>
-          <Link to="/progress" className="nav-link">Progress</Link>
-          <Link to="/leaderboard" className="nav-link">Leaderboard</Link>
+        <div className="navbar-actions">
+          <button
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          <button
+            className="profile-toggle"
+            onClick={onSidebarToggle}
+            aria-label="Open sidebar"
+          >
+            <User size={20} />
+          </button>
         </div>
-
-        <button
-          className="navbar-toggle"
-          onClick={onSidebarToggle}
-          aria-label="Toggle sidebar"
-        >
-          <Menu size={24} />
-        </button>
       </div>
     </nav>
   );
