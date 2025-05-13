@@ -1,7 +1,6 @@
 // src/data/pediatrics.js
 
 const pediatricsQuestions = [
-  const pediatricsQuestions = [
   {
     id: 1,
     question: 'A 2-year-old child presents with a fever, cough, and difficulty breathing. On examination, you hear stridor. What is the likely diagnosis?',
