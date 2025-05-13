@@ -1,14 +1,25 @@
 // src/components/ProgressTracker.js
 import React from 'react';
+import './ProgressTracker.css';
 
 function ProgressTracker({ current, total }) {
-  const progress = (current / total) * 100;
+  const progress = Math.min((current / total) * 100, 100).toFixed(1);
 
   return (
     <div className="progress-tracker">
-      <p>Progress: {current} / {total}</p>
+      <div className="progress-header">
+        <span className="progress-text">Question {current} of {total}</span>
+        <span className="progress-percentage">{progress}%</span>
+      </div>
       <div className="progress-bar">
-        <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+        <div
+          className="progress-fill"
+          style={{ width: `${progress}%` }}
+          role="progressbar"
+          aria-valuenow={progress}
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
       </div>
     </div>
   );
