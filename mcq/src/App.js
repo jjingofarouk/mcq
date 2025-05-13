@@ -15,6 +15,7 @@ import SearchBar from './components/SearchBar';
 import SpecialtySelector from './components/SpecialtySelector';
 import Timer from './components/Timer';
 import UserProfile from './components/UserProfile';
+import AuthPage from './components/AuthPage';
 import './App.css';
 
 function App() {
