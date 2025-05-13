@@ -1,5 +1,6 @@
 // src/components/Timer.js
 import React, { useState, useEffect } from 'react';
+import './Timer.css';
 
 function Timer({ timeLimit, onTimeUp }) {
   const [timeLeft, setTimeLeft] = useState(timeLimit);
@@ -13,9 +14,13 @@ function Timer({ timeLimit, onTimeUp }) {
     return () => clearInterval(timer);
   }, [timeLeft, onTimeUp]);
 
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = (timeLeft % 60).toString().padStart(2, '0');
+
   return (
     <div className={`timer ${timeLeft <= 10 ? 'warning' : ''}`}>
-      Time Left: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
+      <span className="timer-label">Time Left:</span>
+      <span className="timer-value">{minutes}:{seconds}</span>
     </div>
   );
 }
