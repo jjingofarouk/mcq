@@ -1,43 +1,62 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+import '../styles/UserProfile.css';
 
-function UserProfile({ onQuizComplete, minimal = false }) {
-  const [stats, setStats] = useState(() => JSON.parse(localStorage.getItem('quizStats')) || { quizzesTaken: 0, totalScore: 0 });
-  const [isDarkMode, setIsDarkMode] = useState(false);
+function UserProfile({ onQuizComplete }) {
+  const { user } = useAuth();
+  const [profile, setProfile] = useState(null);
+  const [displayName, setDisplayName] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    if (onQuizComplete) {
-      setStats((prev) => {
-        const newStats = { quizzesTaken: prev.quizzesTaken + 1, totalScore: prev.totalScore + onQuizComplete.score };
-        localStorage.setItem('quizStats', JSON.stringify(newStats));
-        return newStats;
-      });
+    if (user) {
+      const fetchProfile = async () => {
+        const docRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setProfile(docSnap.data());
+          setDisplayName(docSnap.data().displayName);
+        }
+      };
+      fetchProfile();
     }
-  }, [onQuizComplete]);
+  }, [user]);
 
-  useEffect(() => {
-    if (isDarkMode) document.body.classList.add('dark-mode');
-    else document.body.classList.remove('dark-mode');
-  }, [isDarkMode]);
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+    try {
+      await updateDoc(doc(db, 'users', user.uid), { displayName });
+      setProfile({ ...profile, displayName });
+      setError('');
+    } catch (err) {
+      setError('Failed to update profile');
+    }
+  };
 
-  if (minimal) {
-    return (
-      <button
-        className="dark-mode-toggle"
-        onClick={() => setIsDarkMode(!isDarkMode)}
-      >
-        {isDarkMode ? '☀️' : '🌙'}
-      </button>
-    );
-  }
+  if (!user) return <p>Please sign in to view your profile.</p>;
 
   return (
     <div className="user-profile">
-      <h3>Your Stats</h3>
-      <p>Quizzes Taken: {stats.quizzesTaken}</p>
-      <p>Average Score: {stats.quizzesTaken ? (stats.totalScore / stats.quizzesTaken).toFixed(1) : 0}%</p>
-      <button onClick={() => setIsDarkMode(!isDarkMode)}>
-        Toggle {isDarkMode ? 'Light' : 'Dark'} Mode
-      </button>
+      <h3>User Profile</h3>
+      {profile && (
+        <>
+          <p>Email: {profile.email}</p>
+          <form onSubmit={handleUpdateProfile}>
+            <label>
+              Display Name:
+              <input
+                type="text"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+              />
+            </label>
+            <button type="submit" className="btn btn-primary">Update</button>
+          </form>
+          {error && <p className="error">{error}</p>}
+        </>
+      )}
     </div>
   );
 }
