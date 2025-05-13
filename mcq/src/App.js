@@ -7,6 +7,14 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
+import ProgressTracker from './components/ProgressTracker';
+import QuestionCard from './components/QuestionCard';
+import QuizSettings from './components/QuizSettings';
+import ReviewAnswers from './components/ReviewAnswers';
+import SearchBar from './components/SearchBar';
+import SpecialtySelector from './components/SpecialtySelector';
+import Timer from './components/Timer';
+import UserProfile from './components/UserProfile';
 import './App.css';
 
 function App() {
@@ -36,10 +44,11 @@ function App() {
           <Route path="/quiz/:specialtyId" element={<Quiz />} />
           <Route path="/results" element={<Results />} />
           <Route path="/quizzes" element={<Home />} />
-          <Route path="/progress" element={<Home />} />
+          <Route path="/progress" element={<ProgressTracker />} />
           <Route path="/leaderboard" element={<Home />} />
-          <Route path="/profile" element={<Home />} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="/logout" element={<Home />} />
+          <Route path="/review" element={<ReviewAnswers />} />
         </Routes>
         <Footer />
       </div>
