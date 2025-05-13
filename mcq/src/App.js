@@ -39,19 +39,21 @@ function App() {
           isDarkMode={isDarkMode}
         />
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/quizzes" element={<SpecialtySelector />} />
-          <Route path="/quiz/:specialtyId" element={<Quiz />} />
-          <Route path="/results" element={<Results />} />
-          <Route path="/progress" element={<ProgressTracker />} />
-          <Route path="/leaderboard" element={<Home />} />
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/settings" element={<Home />} />
-          <Route path="/help" element={<Home />} />
-          <Route path="/logout" element={<Home />} />
-          <Route path="/review" element={<ReviewAnswers />} />
-        </Routes>
+        <main style={{ paddingTop: '96px' }}> {/* Increased padding-top to account for navbar height + margin */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/quizzes" element={<SpecialtySelector />} />
+            <Route path="/quiz/:specialtyId" element={<Quiz />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/progress" element={<ProgressTracker />} />
+            <Route path="/leaderboard" element={<Home />} />
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/settings" element={<Home />} />
+            <Route path="/help" element={<Home />} />
+            <Route path="/logout" element={<Home />} />
+            <Route path="/review" element={<ReviewAnswers />} />
+          </Routes>
+        </main>
         <Footer />
       </div>
     </Router>
