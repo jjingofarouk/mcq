@@ -11,15 +11,25 @@ import './App.css';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.classList.toggle('dark');
+  };
+
   return (
     <Router>
-      <div className="App">
-        <Navbar onSidebarToggle={toggleSidebar} />
+      <div className={`App ${isDarkMode ? 'dark' : ''}`}>
+        <Navbar
+          onSidebarToggle={toggleSidebar}
+          toggleTheme={toggleTheme}
+          isDarkMode={isDarkMode}
+        />
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
         <Routes>
           <Route path="/" element={<Home />} />
