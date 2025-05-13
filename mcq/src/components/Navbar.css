@@ -9,6 +9,7 @@
   z-index: 40;
   transition: all 0.3s ease;
   box-shadow: var(--box-shadow);
+  padding-bottom: var(--spacing-md); /* Added padding-bottom to prevent overlap */
 }
 
 .dark .navbar {
