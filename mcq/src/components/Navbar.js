@@ -20,7 +20,7 @@ function Navbar({ onSidebarToggle, toggleTheme, isDarkMode }) {
     <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-logo">
-          <h1 className="text-xl font-bold">MediQuiz</h1>
+          <h1 className="text-xl font-bold">ClinIQ</h1>
         </Link>
 
         <div className="navbar-actions">
